@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #e73e91;
+  --secondary: #ffd25f;
+  --black: #1e1d19;
+  --white: #fef4d9;
+  --transparent: transparent;
+}
+
+// fonts
+.base-font {
+  font-family: "Inter", sans-serif;
+}
+
+// fluid text
+.hero-title {
+  font-size: clamp(3rem, 2.5vw + 2.5rem, 4.5rem);
+  line-height: clamp(4.5rem, 2.25vw + 4.05rem, 5.85rem);
+}
