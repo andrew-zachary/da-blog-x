@@ -1,5 +1,15 @@
 @include('partials/header')
+
   <section class="h-screen flex justify-center items-center">
-    <h1 class="hero-title text-secondary font-bold"> Da Blog {<span class="text-primary font-black">x</span>} </h1>
+
+    <div class="section-box">
+
+      <h1 class="hero-title text-secondary font-bold mb-4"> Da Blog {<span class="text-primary font-black">x</span>} </h1>
+
+      <div class="flex justify-around">
+        @!button({text: 'posts', type:'link'})
+        @!button({text: 'about', type:'link'})
+      </div>
+    </div>
   </section>
 @include('partials/footer')
