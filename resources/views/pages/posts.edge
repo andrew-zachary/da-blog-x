@@ -1,0 +1,33 @@
+@include('partials/header')
+
+  <section 
+    class="h-screen max-w-screen-md mx-auto
+    grid justify-center items-center"
+  >
+
+    <ul
+      class="pt-12
+      [&_li]:border-b [&_li:last-child]:border-none [&_li]:border-secondary [&_li]:p-2 [&_li]:mb-12
+      [&_li:hover]:bg-tertiary"
+    >
+
+      @each(post in posts)
+        
+        <li>
+          <h1 class="text-6xl text-secondary base-font font-bold capitalize mb-4">title 1</h1>
+          <p class="text-3xl text-primary base-font mb-12">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <div class="flex base-font">
+            <p class="text-1xl">
+              <span class="text-white font-bold capitalize">by :</span>
+              <a class="border-2 border-white hover:border-black bg-white px-4 mx-2 rounded-2xl" href="/users/xyz">xyz</a>
+            </p>
+            <p class="text-1xl">
+              <span class="text-white font-bold capitalize">in :</span>
+              <a class="border-2 border-white hover:border-black bg-white px-4 mx-2 rounded-2xl" href="/categories/cat-1">cat 1</a>
+            </p>
+          </div>
+        </li>
+      @end
+    </ul>
+  </section>
+@include('partials/footer')
