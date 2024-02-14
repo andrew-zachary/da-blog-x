@@ -1,9 +1,16 @@
 import type { HttpContext } from '@adonisjs/core/http'
+import db from '@adonisjs/lucid/services/db'
 
 export default class PostsController {
 
-    async index({ view }:HttpContext) {
+    async index({ view, request }:HttpContext) {
 
-        return view.render('pages/posts', { posts: Array(10) })
+        const page = request.input('page', 1)
+        const limit = 10
+
+        const data = await db.from('posts').paginate(page, limit)
+        console.log(data)
+
+        return view.render('pages/posts', { data })
     }
 }

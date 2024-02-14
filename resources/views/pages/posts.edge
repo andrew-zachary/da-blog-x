@@ -1,3 +1,5 @@
+@let(pageTitle = 'posts')
+
 @include('partials/header')
 
   <section 
@@ -5,24 +7,50 @@
     grid justify-center items-center"
   >
 
+    <div class="w-full fixed left-0 bottom-0 bg-primary">
+
+      <div 
+        class="max-w-screen-md mx-auto
+        p-1
+        flex justify-between
+        [&_.nav-link]:text-1xl [&_.nav-link]:font-bold [&_.nav-link]:capitalize
+        [&_.nav-link]:px-4 
+        [&_a]:text-white [&_a]:border-2 [&_a]:border-white [&_a]:rounded-2xl
+        [&_span]:text-tertiary"
+      >
+
+        @if(data.currentPage >= data.lastPage)
+          <span class="nav-link">prev</span>
+        @else
+          <a class="nav-link" href="/posts/?page={{ data.currentPage + 1 }}">oldest</a>
+        @end
+
+        @if(data.currentPage === 1) 
+          <span class="nav-link">New</span>
+        @else
+          <a class="nav-link" href="/posts/?page={{ data.currentPage - 1 }}">New</a>
+        @end
+      </div>
+    </div>
+
     <ul
-      class="pt-12
+      class="py-12
       [&_li]:border-b [&_li:last-child]:border-none [&_li]:border-secondary [&_li]:p-2 [&_li]:mb-12
-      [&_li:hover]:bg-tertiary"
+      [&_li]:bg-tertiary"
     >
 
-      @each(post in posts)
+      @each(post in data.rows)
         
         <li>
-          <h1 class="text-6xl text-secondary base-font font-bold capitalize mb-4">title 1</h1>
-          <p class="text-3xl text-primary base-font mb-12">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+          <h1 class="text-6xl text-secondary base-font font-bold capitalize mb-4">{{ post.title }}</h1>
+          <p class="text-3xl text-primary base-font mb-12">{{ post.description }}</p>
           <div class="flex base-font">
             <p class="text-1xl">
-              <span class="text-white font-bold capitalize">by :</span>
+              <span class="text-white font-bold capitalize">by</span>
               <a class="border-2 border-white hover:border-black bg-white px-4 mx-2 rounded-2xl" href="/users/xyz">xyz</a>
             </p>
             <p class="text-1xl">
-              <span class="text-white font-bold capitalize">in :</span>
+              <span class="text-white font-bold capitalize">in</span>
               <a class="border-2 border-white hover:border-black bg-white px-4 mx-2 rounded-2xl" href="/categories/cat-1">cat 1</a>
             </p>
           </div>
