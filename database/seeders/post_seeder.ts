@@ -1,8 +1,8 @@
 import { BaseSeeder } from '@adonisjs/lucid/seeders'
-import { PostFactory } from '#database/factories/post_factory'
+import { CategoryFactory } from '#database/factories/category_factory'
 
 export default class extends BaseSeeder {
   async run() {
-    await PostFactory.createMany(50)
+    await CategoryFactory.with('posts', 10).createMany(5)
   }
 }

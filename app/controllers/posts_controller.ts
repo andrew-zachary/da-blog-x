@@ -1,5 +1,5 @@
+import Post from '#models/post'
 import type { HttpContext } from '@adonisjs/core/http'
-import db from '@adonisjs/lucid/services/db'
 
 export default class PostsController {
 
@@ -8,8 +8,7 @@ export default class PostsController {
         const page = request.input('page', 1)
         const limit = 10
 
-        const data = await db.from('posts').paginate(page, limit)
-        console.log(data)
+        const data = await Post.query().preload('category').paginate(page, limit)
 
         return view.render('pages/posts', { data })
     }
