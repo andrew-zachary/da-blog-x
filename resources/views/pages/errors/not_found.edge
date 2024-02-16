@@ -1,6 +1,7 @@
-<h1>404 - Page not found</h1>
-<p>
-  This template is rendered by the
-  <a href="http://docs.adonisjs.com/guides/exception-handling#status-pages">status pages feature</a>
-  of the global exception handler.
-</p>
+@let(pageTitle = '404')
+
+@include('partials/header')
+<section class="h-screen flex justify-center items-center">
+  <h1 class="text-2xl text-secondary font-base font-bold">404 - Page not found</h1>
+</section>
+@include('partials/footer')
