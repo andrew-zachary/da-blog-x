@@ -1,7 +1,6 @@
 import factory from '@adonisjs/lucid/factories'
 import Category from '#models/category'
 import stringHelpers from '@adonisjs/core/helpers/string'
-import { PostFactory } from './post_factory.js'
 
 export const CategoryFactory = factory
   .define(Category, async ({ faker }) => {
@@ -11,5 +10,4 @@ export const CategoryFactory = factory
 
     return { name, slug }
   })
-  .relation('posts', () => PostFactory)
   .build()

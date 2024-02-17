@@ -10,7 +10,7 @@ export default class PostsController {
         const limit = 10
 
         const data = await Post.query().preload('category').paginate(page, limit)
-        if(!data.hasMorePages) throw errors.E_COMMAND_NOT_FOUND
+        if(data.all().length === 0) throw errors.E_COMMAND_NOT_FOUND
 
         return view.render('pages/posts', { data })
     }
