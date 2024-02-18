@@ -12,7 +12,10 @@ export default class CategoriesController {
         const category = await Category.findBy('slug', params.slug)
         if(!category) throw errors.E_COMMAND_NOT_FOUND
 
-        const data = await Category.query().where('id', category.id).preload('posts').paginate(page, limit)
+        const data = await Category.query().where('id', category.id).preload('posts', postsQuery => {
+
+            postsQuery.preload('user')
+        }).paginate(page, limit)
 
         return view.render('categories', { data })
     }
