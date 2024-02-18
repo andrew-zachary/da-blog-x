@@ -6,11 +6,32 @@
 
     <div class="section-box">
 
-      <h1 class="hero-title text-secondary font-bold mb-12"> Da Blog {<span class="text-primary font-black">x</span>} </h1>
+      <nav class="flex justify-between mb-8">
+
+        <div class="lang"></div>
+        
+        <ul 
+          class="flex"
+        >
+          <li>
+            <a 
+              href="/login"
+              class="text-1xl text-primary font-base font-bold capitalize px-4 hover:text-secondary"
+            >
+              sign in
+            </a>
+          </li>
+          <li>
+            @!button({text: 'sign up', href:'/register', textSize: 'text-1xl'})
+          </li>
+        </ul>
+      </nav>
+
+      <h1 class="hero-title text-secondary font-bold mb-16"> Da Blog {<span class="text-primary font-black">x</span>} </h1>
 
       <div class="flex justify-around">
-        @!button({text: 'posts', href:'/posts'})
-        @!button({text: 'about', href:'/about'})
+        @!button({text: 'posts', href: '/posts', textSize: 'text-2xl'})
+        @!button({text: 'about', href: '/about', textSize: 'text-2xl'})
       </div>
     </div>
   </section>
