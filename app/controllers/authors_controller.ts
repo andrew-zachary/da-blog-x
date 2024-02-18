@@ -4,6 +4,19 @@ import type { HttpContext } from '@adonisjs/core/http'
 
 export default class AuthorsController {
 
+    async create({ view }:HttpContext) {
+
+        return view.render('pages/register')
+    }
+
+    async store({ request, auth, response }:HttpContext) {
+
+        const {username, email, password} = request.body()
+        const user = await User.create({username, email, password})
+        await auth.use('web').login(user)
+        return response.redirect('/dashboard')
+    }
+
     async show({ view, request, params }:HttpContext) {
 
         const page = request.input('page', 1)

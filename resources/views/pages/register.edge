@@ -4,10 +4,16 @@
 
 <section class="h-screen flex justify-center items-center">
 
-    <form class="px-4">
+    <form class="px-4" action="/register" method="POST">
+
+        {{ csrfField() }}
+
         @!input({ type: 'text', name: 'username', label: 'name' })
+
         @!input({ type: 'email', name: 'email', label: 'email' })
+
         @!input({ type: 'password', name: 'password', label: 'password' })
+
         <div class="flex justify-end">
             @!button({text: 'sign up', type: 'submit', textSize: 'text-2xl'})
         </div>
