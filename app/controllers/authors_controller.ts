@@ -1,4 +1,5 @@
 import User from '#models/user'
+import { registerUserValidator } from '#validators/register'
 import { errors } from '@adonisjs/core'
 import type { HttpContext } from '@adonisjs/core/http'
 
@@ -12,6 +13,7 @@ export default class AuthorsController {
     async store({ request, auth, response }:HttpContext) {
 
         const {username, email, password} = request.body()
+        await request.validateUsing(registerUserValidator)
         const user = await User.create({username, email, password})
         await auth.use('web').login(user)
         return response.redirect('/dashboard')
