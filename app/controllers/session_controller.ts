@@ -17,4 +17,10 @@ export default class SessionController {
         await auth.use('web').login(user)
         return response.redirect('/dashboard')
     }
+
+    async destroy({ auth, response }:HttpContext) {
+        
+        await auth.use('web').logout()
+        return response.redirect('/')
+    }
 }

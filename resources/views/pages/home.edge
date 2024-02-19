@@ -1,4 +1,5 @@
 @let(pageTitle = 'welcome')
+@eval(await auth.use('web').check())
 
 @include('partials/header')
 
@@ -9,14 +10,27 @@
       <nav class="flex justify-between mb-8">
 
         <div class="lang"></div>
+
+        @if(auth.use('web').isAuthenticated)
         
+        <ul class="flex">
+          <form action="/logout" method="post">
+
+            {{ csrfField() }}
+
+            @!button({text: 'log out', type:'submit', textSize: 'text-1xl'})
+          </form>
+        </ul>
+
+        @else
+
         <ul 
           class="flex"
         >
           <li>
             <a 
               href="/login"
-              class="text-1xl text-primary font-base font-bold capitalize px-4 hover:text-secondary"
+              class="text-1xl text-white font-base font-bold capitalize px-4 hover:text-secondary"
             >
               sign in
             </a>
@@ -25,6 +39,8 @@
             @!button({text: 'sign up', href:'/register', textSize: 'text-1xl'})
           </li>
         </ul>
+
+        @end
       </nav>
 
       <h1 class="hero-title text-secondary font-bold mb-16"> Da Blog {<span class="text-primary font-black">x</span>} </h1>

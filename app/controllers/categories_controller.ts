@@ -17,6 +17,6 @@ export default class CategoriesController {
             postsQuery.preload('user')
         }).paginate(page, limit)
 
-        return view.render('categories', { data })
+        return view.render('pages/categories', { data })
     }
 }

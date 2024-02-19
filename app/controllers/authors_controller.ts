@@ -32,6 +32,6 @@ export default class AuthorsController {
             postsQuery.preload('category')
         }).paginate(page, limit)
 
-        return view.render('authors', { data })
+        return view.render('pages/authors', { data })
     }
 }
