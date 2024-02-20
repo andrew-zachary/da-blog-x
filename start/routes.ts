@@ -15,6 +15,7 @@ import router from '@adonisjs/core/services/router'
 import { middleware } from './kernel.js'
 
 router.on('/').render('pages/home')
+router.on('/about').render('pages/about')
 router.on('/dashboard').render('pages/dashboard').use(middleware.auth())
 router.get('/posts', [PostsController, 'index'])
 router.get('/categories/:slug', [CategoriesController, 'show'])

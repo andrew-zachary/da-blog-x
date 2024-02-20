@@ -1,5 +1,6 @@
 {
   "name": "da-blog-x",
+  "description": "Blog web app",
   "version": "0.0.0",
   "private": true,
   "type": "module",
